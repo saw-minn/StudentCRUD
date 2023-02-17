@@ -2,7 +2,7 @@
 using StudentCRUD.Data;
 using StudentCRUD.Models;
 
-namespace StudentCRUD.Models
+namespace StudentCRUD.Controllers
 {
     public class StudentController : Controller
     {
@@ -33,7 +33,8 @@ namespace StudentCRUD.Models
                 TempData["ResultOk"] = "Record Added Successfully !";
                 return RedirectToAction("Index");
             }
-
+            ViewData["course"] = _context.Courses;
+            ViewData["class"] = _context.Classes;
             return View(empobj);
         }
 

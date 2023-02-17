@@ -25,6 +25,7 @@
                 <th scope="col">Phone</th>
                 <th scope="col">Course</th>
                 <th scope="col">Class</th>
+                <th scope="col">Accesstime</th>
                 <th></th>
             </tr>
         </thead>
@@ -34,7 +35,7 @@
             {
                 <tr>
                     <td width="20%">
-                        @item.StudentId
+                        @item.ID
                     </td>
                     <td width="20%">
                         @item.Name
@@ -46,15 +47,18 @@
                         @item.Phone
                     </td>
                     <td width="20%">
-                        @item.Class
+                        @item.ClassName
                     </td>
                     <td width="20%">
-                        @item.Course
+                        @item.CourseName
+                    </td>
+                    <td width="20%">
+                        @item.Accesstime
                     </td>
                     <td>
                         <div role="group" class="w-60 btn-group">
-                            <a asp-controller="Student" asp-action="Edit" asp-route-id="@item.StudentId" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
-                            <a asp-controller="Student" asp-action="Delete" asp-route-id="@item.StudentId" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
+                            <a asp-controller="Student" asp-action="Edit" asp-route-id="@item.ID" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
+                            <a asp-controller="Student" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
                         </div>
                     </td>
                 </tr>

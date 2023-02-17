@@ -14,73 +14,75 @@ namespace StudentCRUD.Migrations
                 name: "Class",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Class", x => x.Id);
+                    table.PrimaryKey("PK_Class", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Course",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Course", x => x.Id);
+                    table.PrimaryKey("PK_Course", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Students",
+                name: "Student",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CourseId = table.Column<int>(type: "int", nullable: false),
-                    ClassId = table.Column<int>(type: "int", nullable: false)
+                    CourseID = table.Column<int>(type: "int", nullable: false),
+                    CourseName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClassID = table.Column<int>(type: "int", nullable: false),
+                    ClassName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Students", x => x.Id);
+                    table.PrimaryKey("PK_Student", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Students_Class_ClassId",
-                        column: x => x.ClassId,
+                        name: "FK_Student_Class_ClassID",
+                        column: x => x.ClassID,
                         principalTable: "Class",
-                        principalColumn: "Id",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Students_Course_CourseId",
-                        column: x => x.CourseId,
+                        name: "FK_Student_Course_CourseID",
+                        column: x => x.CourseID,
                         principalTable: "Course",
-                        principalColumn: "Id",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Students_ClassId",
-                table: "Students",
-                column: "ClassId");
+                name: "IX_Student_ClassID",
+                table: "Student",
+                column: "ClassID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Students_CourseId",
-                table: "Students",
-                column: "CourseId");
+                name: "IX_Student_CourseID",
+                table: "Student",
+                column: "CourseID");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Students");
+                name: "Student");
 
             migrationBuilder.DropTable(
                 name: "Class");

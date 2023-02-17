@@ -6,23 +6,15 @@ namespace StudentCRUD.Models
 {
     public class Student
     {
-        public int StudentId { get; set; }
+        public int ID { get; set; }
         public string? Name { get; set; }
         public string Address { get; set; }
-
-        public Student(string address)
-        {
-            Address = address;
-        }
-
         public string Phone { get; set; }
-
-        public int CourseId { get; set; }
-        public Course Course { get; set; }
-
-        public int ClassId { get; set; }
-        public Class? Class { get; set; }
-        public object Courses { get; internal set; }
+        public int CourseID { get; set; }
+        public string CourseName { get; set; }
+        public int ClassID { get; set; }
+        public string ClassName { get; set; }
+        public DateTime Accesstime { get; set; }
     }
-        
+
 }
